@@ -66,9 +66,13 @@ class BallSprite(ImageSprite):
 #bg = ImageSprite(filename='stadium.avif', pos=(0,0), size=(WIDTH,HEIGHT))
 p1 = PlayerSprite1(filename='me.jpg', pos=(0,200), size=(100,100))
 p2 = PlayerSprite2(filename='ro.jpg', pos=(700,200), size=(100,100))
-ball = BallSprite(filename='ball.jpg', pos=(WIDTH/2,HEIGHT/2), size=(70,70), speed=(0.1 ,100))
+ball = BallSprite(filename='ball.jpg', pos=(WIDTH/2,HEIGHT/2), size=(70,70), speed=(12 ,10))
+win1 = ImageSprite(filename='messiw.jpg', pos=(0,0), size=(WIDTH,HEIGHT))
+win2 = ImageSprite(filename='siuuu.jpeg', pos=(0,0), size=(WIDTH,HEIGHT))
+
 
 while not event.peek(QUIT):
+
     #bg.draw(window)
     window.fill((165, 245, 6))
     p1.update()
@@ -80,13 +84,21 @@ while not event.peek(QUIT):
 
     if ball.rect.top < 0 or ball.rect.bottom > HEIGHT:
         ball.vertical_bounce()
+    if sprite.collide_rect(p1, ball):
+        ball.horizontal_bounce()
+        ball.rect.left = p1.rect.right
+    if sprite.collide_rect(p2, ball):
+        ball.horizontal_bounce()
+        ball.rect.right = p2.rect.left
     
-
-    
-
-
+    if ball.rect.left < 0: 
+        win1.draw(window)
+    if ball.rect.right > WIDTH:
+        win2.draw(window)
+        
 
 
 
     display.update()
     clock.tick(60)
+
