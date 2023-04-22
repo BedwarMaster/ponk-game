@@ -63,7 +63,7 @@ class BallSprite(ImageSprite):
 
 
 #create player and bg
-#bg = ImageSprite(filename='stadium.avif', pos=(0,0), size=(WIDTH,HEIGHT))
+bg = ImageSprite(filename='uefa.jpg', pos=(0,0), size=(WIDTH,HEIGHT))
 p1 = PlayerSprite1(filename='me.jpg', pos=(0,200), size=(100,100))
 p2 = PlayerSprite2(filename='ro.jpg', pos=(700,200), size=(100,100))
 ball = BallSprite(filename='ball.jpg', pos=(WIDTH/2,HEIGHT/2), size=(70,70), speed=(12 ,10))
@@ -73,8 +73,7 @@ win2 = ImageSprite(filename='siuuu.jpeg', pos=(0,0), size=(WIDTH,HEIGHT))
 
 while not event.peek(QUIT):
 
-    #bg.draw(window)
-    window.fill((165, 245, 6))
+    bg.draw(window)
     p1.update()
     p1.draw(window)
     p2.update()
